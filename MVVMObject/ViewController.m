@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "View.h"
 
 @interface ViewController ()
+
+@property(copy,nonatomic)View * MyView;
 
 @end
 
@@ -16,7 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view addSubview:self.MyView];
+    
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
+}
+-(View *)MyView
+{
+    if (!_MyView) {
+        _MyView = [[View alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    }
+    return _MyView;
 }
 
 - (void)didReceiveMemoryWarning {
